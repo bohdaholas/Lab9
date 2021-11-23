@@ -1,27 +1,28 @@
 package mail_sender;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MailBox {
-    private LinkedList<MailInfo> infos;
-    private MailSender sender;
+    private List<MailInfo> infos;
+    private MailSender mailSender;
 
-    public MailBox() {
-        this.infos = new LinkedList<>();
-        this.sender = new MailSender();
+    public List<MailInfo> getInfos() {
+        return infos;
     }
 
-    public boolean addMailInfo(MailInfo info){
-        if(info != null && info.getClient() != null & info.getMailCode() != null){
-            infos.add(info);
-            return true;
-        }
-        return false;
+    public MailBox() {
+        this.infos = new ArrayList<>();
+        this.mailSender = new MailSender();
+    }
+
+    public void addMailInfo(MailInfo info){
+        infos.add(info);
     }
 
     public void sendAll(){
         for (MailInfo info : infos) {
-            sender.sendMail(info);
+            mailSender.sendMail(info);
         }
         infos.clear();
     }

@@ -17,12 +17,13 @@ public enum MailCode {
 
     public String generateText() {
         String text = "";
-        File file = new File("src/main/resources/"+ filename);
+        File file = new File("src/main/java/mail_sender"+ filename);
 
         try{
             Scanner sc = new Scanner(file);
             sc.useDelimiter("\\Z");
             text = sc.next();
+
         } catch (FileNotFoundException ex){
             ex.printStackTrace();
         }

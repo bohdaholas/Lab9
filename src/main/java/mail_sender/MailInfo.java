@@ -15,10 +15,6 @@ public class MailInfo {
     }
 
     public String getMailText(){
-        if (client == null || mailCode == null){
-            return null;
-        }
-
         String text = mailCode.generateText();
         HashMap<String, String> templates = new HashMap<>();
         templates.put("%NAME%", client.getName());
